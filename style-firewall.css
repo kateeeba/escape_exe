@@ -1,0 +1,218 @@
+/* ═══════════════════════════════════════════
+   ESCAPE.EXE – style-firewall.css
+   AUFGABE 5: Spezialraum – Firewall / Alarm
+   Kombination aus allen Techniken:
+   Gradient, Animation, Transparenz, Hover, Bilder
+   ═══════════════════════════════════════════ */
+
+
+/* ══════════════════════════════
+   1) GRADIENT
+   Roter Alarm-Gradient als Overlay
+   über dem Raumbild
+   ══════════════════════════════ */
+.raum5 #bildbereich::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg,
+    rgba(120, 0, 0, 0.45) 0%,
+    rgba(60,  0, 0, 0.25) 40%,
+    rgba(120, 0, 0, 0.45) 70%,
+    rgba(0,   0, 0, 0.30) 100%
+  );
+  pointer-events: none;
+}
+
+
+/* ══════════════════════════════
+   2) ANIMATION
+   a) Warnblinken – rotes Overlay pulsiert
+   b) Alarmlicht dreht / blinkt
+   ══════════════════════════════ */
+
+/* a) Roter Alarm-Puls über dem gesamten Bildbereich */
+@keyframes alarm-puls {
+  0%, 100% { background-color: rgba(255, 0, 0, 0);    }
+  50%       { background-color: rgba(255, 0, 0, 0.30); }
+}
+
+.raum5 #bildbereich {
+  animation: alarm-puls 1s ease-in-out infinite;
+}
+
+/* b) Alarmlichter blinken abwechselnd */
+@keyframes licht-blinken {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 1;   }
+}
+
+#fw-alarmlicht-links {
+  animation: licht-blinken 1s ease-in-out infinite;
+}
+
+#fw-alarmlicht-rechts {
+  /* versetzt – linkes und rechtes blinken abwechselnd */
+  animation: licht-blinken 1s ease-in-out infinite 0.5s;
+}
+
+
+/* ══════════════════════════════
+   3) TRANSPARENZ
+   Items starten halbtransparent
+   ══════════════════════════════ */
+.fw-item {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+  opacity: 0.75;                        /* Transparenz-Grundwert  */
+  transition: opacity 0.2s ease,
+              transform 0.2s ease,
+              filter 0.2s ease;         /* weiche Übergänge       */
+}
+
+
+/* ══════════════════════════════
+   4) HOVER-EFFEKTE
+   Verschiedene Reaktionen pro Item
+   ══════════════════════════════ */
+
+/* Alarmlichter: leuchten auf */
+#fw-alarmlicht-links:hover,
+#fw-alarmlicht-rechts:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 12px #ff4444);
+}
+
+/* Warnschild: wird größer */
+#fw-warnschild:hover {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+/* Terminal: grünes Leuchten beim Hover */
+#fw-terminal:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px #00ff88);
+}
+
+/* Schloss: zittert leicht */
+@keyframes zittern {
+  0%, 100% { transform: translateX(0);    }
+  25%       { transform: translateX(-4px); }
+  75%       { transform: translateX(4px);  }
+}
+
+#fw-schloss:hover {
+  animation: zittern 0.3s ease infinite;
+  opacity: 1;
+}
+
+
+/* ══════════════════════════════
+   5) POSITIONEN DER BILDER
+   ══════════════════════════════ */
+
+/* Alarmlicht links oben */
+#fw-alarmlicht-links {
+  width: 60px; height: 60px;
+  top: 5%; left: 5%;
+}
+
+/* Alarmlicht rechts oben */
+#fw-alarmlicht-rechts {
+  width: 60px; height: 60px;
+  top: 5%; right: 5%;
+}
+
+/* Warnschild oben Mitte */
+#fw-warnschild {
+  width: 80px; height: 80px;
+  top: 8%; left: 44%;
+}
+
+/* Terminal Mitte */
+#fw-terminal {
+  width: 100px; height: 100px;
+  top: 35%; left: 40%;
+}
+
+/* Schloss unten Mitte */
+#fw-schloss {
+  width: 70px; height: 70px;
+  bottom: 10%; left: 45%;
+}
+
+
+/* ══════════════════════════════
+   ATMOSPHÄRE: Menü + Bereiche
+   rot einfärben für Alarmstimmung
+   ══════════════════════════════ */
+.raum5 #menu {
+  background: #1a0000;
+  border-color: #ff444433;
+}
+
+.raum5 #menu-titel {
+  color: #ff4444;
+  animation: licht-blinken 1s ease-in-out infinite;
+}
+
+.raum5 #textbereich,
+.raum5 #navigation,
+.raum5 #interaktionsbereich {
+  border-color: #ff444433;
+  background: #0a0000;
+}
+
+.raum5 #textbereich p     { color: #ff8888; }
+.raum5 #navigation h3,
+.raum5 #interaktionsbereich h3 { color: #ff4444; }
+
+.raum5 #navigation a {
+  color: #ff8888;
+  border-color: #ff444444;
+}
+
+.raum5 #navigation a:hover {
+  background: #ff444422;
+  border-color: #ff4444;
+}
+
+.raum5 #aktionen button {
+  border-color: #ff444444;
+  color: #ff8888;
+}
+
+.raum5 #aktionen button:hover {
+  background: #ff444422;
+}
+
+/* Code-Eingabefeld */
+.raum5 #code-input {
+  background: #0a0000;
+  border: 1px solid #ff444466;
+  color: #ff8888;
+  padding: 5px 10px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  width: 160px;
+  margin-top: 10px;
+}
+
+.raum5 #btn-bestaetigen {
+  background: none;
+  border: 1px solid #ff444466;
+  color: #ff8888;
+  padding: 5px 12px;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.raum5 #btn-bestaetigen:hover {
+  background: #ff444422;
+}

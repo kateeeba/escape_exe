@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ESCAPE.EXE – Login</title>
+    <link rel="stylesheet" href="style-login.css" />
+  </head>
+  <body>
+    <!-- TOPBAR -->
+    <div id="topbar">
+      <span id="topbar-links">ESCAPE.EXE</span>
+      <span id="topbar-rechts">LOGIN TERMINAL</span>
+    </div>
+
+    <!-- HINTERGRUND-DEKORATION -->
+    <div class="bg-links">
+      <div class="circuit-linie"></div>
+      <div class="circuit-linie"></div>
+      <div class="circuit-linie"></div>
+      <div class="circuit-dot"></div>
+      <div class="circuit-linie"></div>
+      <div class="circuit-dot"></div>
+      <div class="circuit-linie"></div>
+    </div>
+    <div class="bg-rechts">
+      <div class="circuit-linie"></div>
+      <div class="circuit-linie"></div>
+      <div class="circuit-dot"></div>
+      <div class="circuit-linie"></div>
+      <div class="circuit-linie"></div>
+      <div class="circuit-dot"></div>
+      <div class="circuit-linie"></div>
+    </div>
+
+    <!-- LOGIN-KARTE -->
+    <div id="login-karte">
+      <!-- Schloss-Icon oben -->
+      <div id="schloss-icon">🔒</div>
+
+      <h1 id="login-titel">SYSTEM ACCESS REQUIRED</h1>
+      <p id="login-untertitel">— BITTE ANMELDUNGSDATEN EINGEBEN —</p>
+
+      <!-- BENUTZER-ID -->
+      <div class="feld-gruppe">
+        <label class="feld-label">BENUTZER-ID</label>
+        <div class="feld-wrapper">
+          <span class="feld-icon">👤</span>
+          <input
+            type="text"
+            id="input-benutzer"
+            placeholder="Benutzer-ID eingeben..."
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- ZUGRIFFSCODE -->
+      <div class="feld-gruppe">
+        <label class="feld-label">ZUGRIFFSCODE</label>
+        <div class="feld-wrapper">
+          <span class="feld-icon">🔒</span>
+          <input
+            type="password"
+            id="input-passwort"
+            placeholder="Zugriffscode eingeben..."
+            autocomplete="off"
+          />
+          <button
+            id="btn-auge"
+            onclick="togglePasswort()"
+            title="Passwort anzeigen"
+          >
+            <span id="auge-symbol">👁</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- FEHLERMELDUNG -->
+      <div id="login-fehler"></div>
+
+      <!-- LOGIN-BUTTON -->
+      <button id="btn-login" onclick="login()">&gt; SYSTEM STARTEN &lt;</button>
+    </div>
+
+    <!-- STATUS-LEISTE -->
+    <div id="status-leiste">
+      <span id="status-label">SYSTEM STATUS</span>
+      <div id="status-inhalt">
+        <span id="status-dot"></span>
+        <span id="status-text">Verbindung instabil ...</span>
+        <span id="status-welle">▁▂▃▂▁▃▄▃▂▁▂▃▄▅▄▃▂▁</span>
+      </div>
+    </div>
+
+    <script>
+      // ── Option B: festes Passwort ──
+      // Später durch Backend-Call ersetzen
+      const BENUTZER = "admin";
+      const PASSWORT = "escape123";
+
+      function login() {
+        const benutzer = document.getElementById("input-benutzer").value.trim();
+        const passwort = document.getElementById("input-passwort").value.trim();
+        const fehler = document.getElementById("login-fehler");
+        const status = document.getElementById("status-text");
+
+        // Leere Felder
+        if (!benutzer || !passwort) {
+          fehler.textContent = "⚠ Alle Felder müssen ausgefüllt sein.";
+          fehler.className = "sichtbar";
+          return;
+        }
+
+        // Prüfung
+        if (benutzer === BENUTZER && passwort === PASSWORT) {
+          fehler.textContent = "";
+          fehler.className = "";
+          status.textContent = "Zugriff gewährt. System wird gestartet...";
+          document.getElementById("status-dot").style.background = "#00ff88";
+          document.getElementById("btn-login").textContent = "VERBINDE...";
+          document.getElementById("btn-login").disabled = true;
+
+          // Nach kurzer Verzögerung zu raum1 weiterleiten
+          setTimeout(() => {
+            window.location.href = "raum1.html";
+          }, 1500);
+        } else {
+          fehler.textContent = "⚠ Ungültige Benutzer-ID oder Zugriffscode.";
+          fehler.className = "sichtbar fehler";
+          status.textContent = "Zugriff verweigert. Verbindung instabil...";
+          document.getElementById("status-dot").style.background = "#ff4444";
+
+          // Schütteln der Karte
+          document.getElementById("login-karte").classList.add("schuetteln");
+          setTimeout(() => {
+            document
+              .getElementById("login-karte")
+              .classList.remove("schuetteln");
+          }, 500);
+        }
+      }
+
+      // Enter-Taste auslösen
+      document.addEventListener("DOMContentLoaded", () => {
+        document
+          .getElementById("input-passwort")
+          .addEventListener("keydown", (e) => {
+            if (e.key === "Enter") login();
+          });
+        document
+          .getElementById("input-benutzer")
+          .addEventListener("keydown", (e) => {
+            if (e.key === "Enter")
+              document.getElementById("input-passwort").focus();
+          });
+      });
+
+      // Passwort anzeigen/verbergen
+      function togglePasswort() {
+        const feld = document.getElementById("input-passwort");
+        feld.type = feld.type === "password" ? "text" : "password";
+      }
+    </script>
+  </body>
+</html>

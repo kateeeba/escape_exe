@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ESCAPE.EXE - Raum 5: Firewall</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style-firewall.css" />
+  </head>
+  <body class="raum5">
+    <div id="spiel-container">
+      <!-- MENUE -->
+      <div id="menu">
+        <span id="menu-titel">ESCAPE.EXE - ALARM</span>
+        <button>Neues Spiel</button>
+        <button>Speichern</button>
+        <button>Laden</button>
+      </div>
+
+      <!-- BILDBEREICH MIT FIREWALL-ELEMENTEN -->
+      <div id="bildbereich">
+        <img src="bilder/raum5.png" alt="Firewall" />
+
+        <div
+          class="fw-item"
+          id="fw-alarmlicht-links"
+          style="background-image: url(&quot;bilder/items/alarmlicht.png&quot;)"
+        ></div>
+        <div
+          class="fw-item"
+          id="fw-alarmlicht-rechts"
+          style="background-image: url(&quot;bilder/items/alarmlicht.png&quot;)"
+        ></div>
+        <div
+          class="fw-item"
+          id="fw-warnschild"
+          style="
+            background-image: url(&quot;bilder/items/warnschild_2.png&quot;);
+          "
+        ></div>
+        <div
+          class="fw-item"
+          id="fw-terminal"
+          style="background-image: url(&quot;bilder/items/terminal.png&quot;)"
+        ></div>
+        <div
+          class="fw-item"
+          id="fw-schloss"
+          style="background-image: url(&quot;bilder/items/schloss.png&quot;)"
+        ></div>
+      </div>
+
+      <!-- TEXTBEREICH -->
+      <div id="textbereich">
+        <p>
+          Ein roter Sicherheitsbereich voller Alarmlichter. Eine riesige
+          Firewall blockiert den Weg zum Ausgang.
+        </p>
+        <p style="color: #ffcc00">
+          An der Wand: Rechner denken in 0 und 1. Terminal: Zugriff erlaubt ab
+          Wert &gt; 9.
+        </p>
+        <p style="color: #ffcc00">
+          SYSROOT: Der Code ist 2. Oder 4. Oder vielleicht 1010?
+        </p>
+      </div>
+
+      <!-- INVENTAR -->
+      <div id="inventar">
+        <h3>INVENTAR</h3>
+        <table id="inv-tabelle">
+          <thead>
+            <tr>
+              <th>Bild</th>
+              <th>Beschreibung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="bilder/items/kabel.png" alt="Kabelst&uuml;ck" /></td>
+              <td>Kabelst&uuml;ck</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/passwort.png" alt="Passwort-Zettel" />
+              </td>
+              <td>Passwort-Zettel</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/energiechip.png" alt="Energiechip" />
+              </td>
+              <td>Energiechip</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/admin.png" alt="Admin-Schl&uuml;ssel" />
+              </td>
+              <td>Admin-Schl&uuml;ssel</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/debug-lupe.png" alt="Debug-Lupe" />
+              </td>
+              <td>Debug-Lupe</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- NAVIGATION - MINI-MAP -->
+      <div id="navigation">
+        <h3>MINI-MAP</h3>
+        <div id="mini-map">
+          <a
+            href="raum1.html"
+            class="map-box erreichbar"
+            style="grid-column: 3; grid-row: 1"
+          >
+            <span class="map-box-nr">Raum 1 &#10003;</span>
+            <span class="map-box-name">BOOT-SEQUENZ</span>
+          </a>
+
+          <div class="map-v-con" style="grid-column: 3; grid-row: 2"></div>
+
+          <a
+            href="raum3.html"
+            class="map-box erreichbar"
+            style="grid-column: 1; grid-row: 3"
+          >
+            <span class="map-box-nr">Raum 3 &#10003;</span>
+            <span class="map-box-name">FESTPLATTEN-ARCHIV</span>
+          </a>
+          <div class="map-h-con" style="grid-column: 2; grid-row: 3"></div>
+          <a
+            href="raum2.html"
+            class="map-box erreichbar"
+            style="grid-column: 3; grid-row: 3"
+          >
+            <span class="map-box-nr">Raum 2 &#10003;</span>
+            <span class="map-box-name">SYSTEM CORE</span>
+          </a>
+          <div class="map-h-con" style="grid-column: 4; grid-row: 3"></div>
+          <a
+            href="raum4.html"
+            class="map-box erreichbar"
+            style="grid-column: 5; grid-row: 3"
+          >
+            <span class="map-box-nr">Raum 4 &#10003;</span>
+            <span class="map-box-name">CPU-KERN</span>
+          </a>
+
+          <div class="map-v-con" style="grid-column: 3; grid-row: 4"></div>
+
+          <a
+            href="raum5.html"
+            class="map-box aktiv"
+            style="grid-column: 3; grid-row: 5"
+          >
+            <span class="map-box-nr">Raum 5</span>
+            <span class="map-box-name">FIREWALL</span>
+          </a>
+
+          <div class="map-v-con" style="grid-column: 3; grid-row: 6"></div>
+
+          <a
+            href="raum6.html"
+            class="map-box erreichbar"
+            style="grid-column: 3; grid-row: 7"
+          >
+            <span class="map-box-nr">Raum 6</span>
+            <span class="map-box-name">USB-AUSGANG</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- INTERAKTIONSBEREICH -->
+      <div id="interaktionsbereich">
+        <h3>AKTIONEN</h3>
+        <div id="aktionen">
+          <button>Debug-Lupe benutzen</button>
+        </div>
+        <input type="text" id="code-input" placeholder="Code eingeben..." />
+        <button id="btn-bestaetigen">Best&auml;tigen</button>
+        <div id="meldung"></div>
+      </div>
+    </div>
+  </body>
+</html>

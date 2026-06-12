@@ -1,0 +1,216 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000;
+  color: #00ff66;
+  font-family: "Courier New", monospace;
+  min-height: 100vh;
+}
+
+.login-page {
+  min-height: 100vh;
+  margin: 14px;
+  border: 1px solid #00ff6644;
+  background:
+    linear-gradient(rgba(0, 255, 100, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at center, #062514 0%, #020805 55%, #000 100%);
+  background-size:
+    100% 4px,
+    cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-page::before,
+.login-page::after {
+  content: "0 1 0 0 1 1 0 1 0 1 1 0";
+  position: absolute;
+  top: 70px;
+  width: 120px;
+  height: 500px;
+  color: #00ff6633;
+  font-size: 18px;
+  line-height: 1.7;
+  writing-mode: vertical-rl;
+}
+
+.login-page::before {
+  left: 20px;
+}
+
+.login-page::after {
+  right: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #00ff6622;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.login-center {
+  width: 72%;
+  max-width: 720px;
+  margin: 36px auto 0;
+}
+
+.login-box {
+  border: 2px solid #00ff66;
+  padding: 38px 70px;
+  text-align: center;
+  background: rgba(0, 10, 5, 0.82);
+  box-shadow:
+    0 0 20px #00ff6655,
+    inset 0 0 35px #00ff6611;
+
+  clip-path: polygon(
+    4% 0,
+    96% 0,
+    100% 8%,
+    100% 92%,
+    96% 100%,
+    4% 100%,
+    0 92%,
+    0 8%
+  );
+}
+
+.lock {
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 10px #00ff66;
+}
+
+.login-box p {
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+form {
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin: 18px 0 8px;
+  font-size: 15px;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #00ff66;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.input-box span {
+  font-size: 20px;
+}
+
+input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #00ff66;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: #00ff6688;
+}
+
+button {
+  display: block;
+  margin: 28px auto 0;
+  padding: 14px 48px;
+  background: rgba(0, 255, 100, 0.08);
+  border: 2px solid #00ff66;
+  color: #00ff66;
+  font-family: "Courier New", monospace;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 18px #00ff6644;
+}
+
+button:hover {
+  background: rgba(0, 255, 100, 0.18);
+  box-shadow: 0 0 25px #00ff66;
+}
+
+.status-box {
+  margin: 22px auto;
+  padding: 16px;
+  border: 1px solid #00ff6644;
+  background: rgba(0, 10, 5, 0.75);
+}
+
+.status-box h3 {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.status-box p {
+  font-size: 13px;
+}
+
+.signal {
+  margin-top: 10px;
+  height: 8px;
+  width: 45%;
+  background: repeating-linear-gradient(
+    90deg,
+    #00ff66 0 6px,
+    transparent 6px 10px
+  );
+  animation: signal 1.2s infinite linear;
+}
+
+@keyframes signal {
+  0% {
+    opacity: 0.3;
+    width: 20%;
+  }
+  50% {
+    opacity: 1;
+    width: 70%;
+  }
+  100% {
+    opacity: 0.4;
+    width: 40%;
+  }
+}
+
+@media (max-width: 700px) {
+  .login-center {
+    width: 92%;
+  }
+
+  .login-box {
+    padding: 28px 22px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+  }
+}

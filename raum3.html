@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ESCAPE.EXE - Raum 3: Festplatten-Archiv</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="raum3">
+    <div id="spiel-container">
+      <!-- MENUE -->
+      <div id="menu">
+        <span id="menu-titel">ESCAPE.EXE</span>
+        <button>Neues Spiel</button>
+        <button>Speichern</button>
+        <button>Laden</button>
+      </div>
+
+      <!-- BILDBEREICH MIT ITEMS -->
+      <div id="bildbereich">
+        <img src="bilder/raum3.png" alt="Festplatten-Archiv" />
+
+        <div
+          class="raum-item"
+          id="item-fragment1"
+          style="background-image: url(&quot;bilder/items/fragment1.png&quot;)"
+        ></div>
+        <div
+          class="raum-item"
+          id="item-fragment2"
+          style="background-image: url(&quot;bilder/items/fragment2.png&quot;)"
+        ></div>
+        <div
+          class="raum-item"
+          id="item-fragment3"
+          style="background-image: url(&quot;bilder/items/fragment3.png&quot;)"
+        ></div>
+        <div
+          class="raum-item"
+          id="item-fragment4"
+          style="background-image: url(&quot;bilder/items/fragment4.png&quot;)"
+        ></div>
+        <div
+          class="raum-item"
+          id="item-speicherstick"
+          style="
+            background-image: url(&quot;bilder/items/speicherstick.png&quot;);
+          "
+        ></div>
+        <div
+          class="raum-item"
+          id="item-adminkey"
+          style="background-image: url(&quot;bilder/items/adminKey.png&quot;)"
+        ></div>
+      </div>
+
+      <!-- TEXTBEREICH -->
+      <div id="textbereich">
+        <p>
+          Ein gro&szlig;er digitaler Archivraum mit schwebenden Dateien und
+          besch&auml;digten Daten. Alte Systemdateien treiben durch den Raum.
+        </p>
+        <p>
+          Eine Datei f&auml;llt auf:
+          <span style="color: #ff4444">log_old.txt: Zugriffscode besch&auml;digt</span>
+        </p>
+        <p style="color: #ffcc00">
+          SYSROOT: Alte Dateien. Nichts Interessantes hier. Geh weiter.
+        </p>
+      </div>
+
+      <!-- INVENTAR -->
+      <div id="inventar">
+        <h3>INVENTAR</h3>
+        <table id="inv-tabelle">
+          <thead>
+            <tr>
+              <th>Bild</th>
+              <th>Beschreibung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="bilder/items/kabel.png" alt="Kabelst&uuml;ck" /></td>
+              <td>Kabelst&uuml;ck</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/passwort.png" alt="Passwort-Zettel" />
+              </td>
+              <td>Passwort-Zettel</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/energiechip.png" alt="Energiechip" />
+              </td>
+              <td>Energiechip</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/admin.png" alt="Admin-Schl&uuml;ssel" />
+              </td>
+              <td>Admin-Schl&uuml;ssel</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/debug-lupe.png" alt="Debug-Lupe" />
+              </td>
+              <td>Debug-Lupe</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- NAVIGATION - MINI-MAP -->
+      <div id="navigation">
+        <h3>MINI-MAP</h3>
+        <div id="mini-map">
+          <a
+            href="raum1.html"
+            class="map-box erreichbar"
+            style="grid-column: 3; grid-row: 1"
+          >
+            <span class="map-box-nr">Raum 1 &#10003;</span>
+            <span class="map-box-name">BOOT-SEQUENZ</span>
+          </a>
+
+          <div class="map-v-con" style="grid-column: 3; grid-row: 2"></div>
+
+          <a
+            href="raum3.html"
+            class="map-box aktiv"
+            style="grid-column: 1; grid-row: 3"
+          >
+            <span class="map-box-nr">Raum 3</span>
+            <span class="map-box-name">FESTPLATTEN-ARCHIV</span>
+          </a>
+          <div class="map-h-con" style="grid-column: 2; grid-row: 3"></div>
+          <a
+            href="raum2.html"
+            class="map-box erreichbar"
+            style="grid-column: 3; grid-row: 3"
+          >
+            <span class="map-box-nr">Raum 2 &#10003;</span>
+            <span class="map-box-name">SYSTEM CORE</span>
+          </a>
+          <div class="map-h-con" style="grid-column: 4; grid-row: 3"></div>
+          <a
+            href="raum4.html"
+            class="map-box erreichbar"
+            style="grid-column: 5; grid-row: 3"
+          >
+            <span class="map-box-nr">Raum 4</span>
+            <span class="map-box-name">CPU-KERN</span>
+          </a>
+
+          <div class="map-v-con" style="grid-column: 3; grid-row: 4"></div>
+
+          <div class="map-box gesperrt" style="grid-column: 3; grid-row: 5">
+            <span class="map-box-nr">Raum 5</span>
+            <span class="map-box-name">FIREWALL</span>
+            <span class="map-lock">&#128274;</span>
+          </div>
+
+          <div class="map-v-con" style="grid-column: 3; grid-row: 6"></div>
+
+          <div class="map-box gesperrt" style="grid-column: 3; grid-row: 7">
+            <span class="map-box-nr">Raum 6</span>
+            <span class="map-box-name">USB-AUSGANG</span>
+            <span class="map-lock">&#128274;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERAKTIONSBEREICH -->
+      <div id="interaktionsbereich">
+        <h3>AKTIONEN</h3>
+        <div id="aktionen">
+          <button>Fragment 1 aufnehmen</button>
+          <button>Fragment 2 aufnehmen</button>
+          <button>Fragment 3 aufnehmen</button>
+          <button>Fragment 4 aufnehmen</button>
+          <button>Speicher-Stick aufnehmen</button>
+          <button>Datei reparieren</button>
+        </div>
+        <div id="meldung"></div>
+      </div>
+    </div>
+  </body>
+</html>

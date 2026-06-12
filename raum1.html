@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ESCAPE.EXE – Raum 1: Boot-Sequenz</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="raum1">
+    <div id="spiel-container">
+      <!-- MENÜ -->
+      <div id="menu">
+        <span id="menu-titel">ESCAPE.EXE</span>
+        <button>Neues Spiel</button>
+        <button>Speichern</button>
+        <button>Laden</button>
+      </div>
+
+      <!-- BILDBEREICH -->
+      <div id="bildbereich">
+        <img src="bilder/raum1.png" alt="Boot-Sequenz" />
+        <section class="boot-monitor">
+          <h2>BOOT-SEQUENZ</h2>
+          <p>SYSTEMSTART ANGEHALTEN</p>
+          <div class="boot-fortschritt">
+            <div class="boot-balken"></div>
+          </div>
+          <strong>73%</strong>
+          <div class="boot-log">
+            &gt; SYSTEM INITIALISIERT...<br />
+            &gt; DIAGNOSE-TERMINALS OFFLINE
+          </div>
+        </section>
+
+        <div class="terminal-reihe">
+          <button class="diagnose-terminal" type="button" data-terminal="A">
+            <span class="terminal-name">TERMINAL A</span>
+            <span class="terminal-aufgabe">BOOT MANAGER</span>
+            <span class="terminal-status offline">■ OFFLINE</span>
+          </button>
+          <button class="diagnose-terminal" type="button" data-terminal="B">
+            <span class="terminal-name">TERMINAL B</span>
+            <span class="terminal-aufgabe">MEMORY CHECK</span>
+            <span class="terminal-status offline">■ OFFLINE</span>
+          </button>
+          <button class="diagnose-terminal" type="button" data-terminal="C">
+            <span class="terminal-name">TERMINAL C</span>
+            <span class="terminal-aufgabe">NETWORK NODE</span>
+            <span class="terminal-status offline">■ OFFLINE</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- TEXTBEREICH -->
+      <div id="textbereich">
+        <p>
+          Du arbeitest spät abends an deinem alten Computer. Plötzlich beginnt
+          der Bildschirm zu flackern, Funken schlagen aus dem Monitor und du
+          wirst in das Innere des Computers hineingezogen.
+        </p>
+        <p>
+          Die Boot-Sequenz ist bei 73 % eingefroren. Klicke auf die drei
+          Terminals, um sie zu aktivieren.
+        </p>
+      </div>
+      <!-- INVENTAR -->
+      <div id="inventar">
+        <h3>INVENTAR</h3>
+        <table id="inv-tabelle">
+          <thead>
+            <tr>
+              <th>Bild</th>
+              <th>Beschreibung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Slot 1: Debug-Lupe (von Anfang an vorhanden) -->
+            <tr>
+              <td>
+                <img src="bilder/items/debug-lupe.png" alt="Debug-Lupe" />
+              </td>
+              <td>Debug-Lupe</td>
+            </tr>
+            <!-- Slot 2-5: leer (werden per JS befüllt) -->
+            <tr class="inv-leer">
+              <td></td>
+              <td>–</td>
+            </tr>
+            <tr class="inv-leer">
+              <td></td>
+              <td>–</td>
+            </tr>
+            <tr class="inv-leer">
+              <td></td>
+              <td>–</td>
+            </tr>
+            <tr class="inv-leer">
+              <td></td>
+              <td>–</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- NAVIGATION – MINI-MAP -->
+      <div id="navigation">
+        <h3>MINI-MAP</h3>
+        <div id="mini-map">
+          <!-- R1: oben Mitte (col 3, row 1) – AKTIV -->
+          <a
+            href="raum1.html"
+            class="map-box aktiv"
+            style="grid-column: 3; grid-row: 1"
+          >
+            <span class="map-box-nr">Raum 1 ✓</span>
+            <span class="map-box-name">BOOT-SEQUENZ</span>
+          </a>
+
+          <!-- Verbindung R1 → R2 -->
+          <div class="map-v-con" style="grid-column: 3; grid-row: 2"></div>
+
+          <!-- Horizontale Reihe: R3 — R2 — R4 (row 3) -->
+          <div class="map-box gesperrt" style="grid-column: 1; grid-row: 3">
+            <span class="map-box-nr">Raum 3</span>
+            <span class="map-box-name">FESTPLATTEN-ARCHIV</span>
+            <span class="map-lock">🔒</span>
+          </div>
+          <div class="map-h-con" style="grid-column: 2; grid-row: 3"></div>
+          <a
+            href="raum2.html"
+            class="map-box erreichbar"
+            style="grid-column: 3; grid-row: 3"
+          >
+            <span class="map-box-nr">Raum 2</span>
+            <span class="map-box-name">SYSTEM CORE</span>
+          </a>
+          <div class="map-h-con" style="grid-column: 4; grid-row: 3"></div>
+          <div class="map-box gesperrt" style="grid-column: 5; grid-row: 3">
+            <span class="map-box-nr">Raum 4</span>
+            <span class="map-box-name">CPU-KERN</span>
+            <span class="map-lock">🔒</span>
+          </div>
+
+          <!-- Verbindung R2 → R5 -->
+          <div class="map-v-con" style="grid-column: 3; grid-row: 4"></div>
+
+          <!-- R5 (col 3, row 5) -->
+          <div class="map-box gesperrt" style="grid-column: 3; grid-row: 5">
+            <span class="map-box-nr">Raum 5</span>
+            <span class="map-box-name">FIREWALL</span>
+            <span class="map-lock">🔒</span>
+          </div>
+
+          <!-- Verbindung R5 → R6 -->
+          <div class="map-v-con" style="grid-column: 3; grid-row: 6"></div>
+
+          <!-- R6 (col 3, row 7) -->
+          <div class="map-box gesperrt" style="grid-column: 3; grid-row: 7">
+            <span class="map-box-nr">Raum 6</span>
+            <span class="map-box-name">USB-AUSGANG</span>
+            <span class="map-lock">🔒</span>
+          </div>
+        </div>
+      </div>
+      <!-- INTERAKTIONSBEREICH -->
+      <div id="interaktionsbereich">
+        <h3>AKTIONEN</h3>
+        <div id="aktionen">
+          <p style="color: #00ff8866; font-size: 13px">
+            Klicke auf die Terminals im Bild, um eine Diagnose durchzuführen.
+          </p>
+        </div>
+        <div id="meldung"></div>
+      </div>
+    </div>
+    <script>
+      const meldung = document.getElementById("meldung");
+      const terminals = document.querySelectorAll(".diagnose-terminal");
+
+      terminals.forEach((terminal) => {
+        terminal.addEventListener("click", () => {
+          const status = terminal.querySelector(".terminal-status");
+          const name = terminal.dataset.terminal;
+          status.className = "terminal-status ok";
+          status.textContent = "OK";
+          terminal.classList.add("terminal-ok");
+          meldung.className = "erfolg";
+          meldung.textContent = `Terminal ${name} wurde aktiviert.`;
+        });
+      });
+    </script>
+  </body>
+</html>

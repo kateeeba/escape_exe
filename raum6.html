@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ESCAPE.EXE - Raum 6: USB-Ausgang</title>
+    <link rel="stylesheet" href="style-ausgang.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="raum6">
+    <div id="spiel-container">
+      <!-- MENUE -->
+      <div id="menu">
+        <span id="menu-titel">ESCAPE.EXE</span>
+        <button>Neues Spiel</button>
+        <button>Speichern</button>
+        <button>Laden</button>
+      </div>
+
+      <!-- BILDBEREICH -->
+      <div id="bildbereich">
+        <img src="bilder/raum6.png" alt="USB-Ausgang" />
+      </div>
+
+      <!-- TEXTBEREICH -->
+      <div id="textbereich">
+        <p>
+          Ein heller blauer Tunnel voller Energie und leuchtender Datenstr&ouml;me.
+          Du erreichst endlich den Ausgang des Systems. Er ist noch versiegelt:
+          du brauchst den Speicher-Stick und den Energiechip.
+        </p>
+        <p style="color: #ffcc00">
+          SYSROOT: M&ouml;chtest du das System wirklich verlassen?
+        </p>
+      </div>
+
+      <!-- INVENTAR -->
+      <div id="inventar">
+        <h3>INVENTAR</h3>
+        <table id="inv-tabelle">
+          <thead>
+            <tr>
+              <th>Bild</th>
+              <th>Beschreibung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="bilder/items/kabel.png" alt="Kabelst&uuml;ck" /></td>
+              <td>Kabelst&uuml;ck</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/passwort.png" alt="Passwort-Zettel" />
+              </td>
+              <td>Passwort-Zettel</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/energiechip.png" alt="Energiechip" />
+              </td>
+              <td>Energiechip</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/admin.png" alt="Admin-Schl&uuml;ssel" />
+              </td>
+              <td>Admin-Schl&uuml;ssel</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/debug-lupe.png" alt="Debug-Lupe" />
+              </td>
+              <td>Debug-Lupe</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- NAVIGATION - MINI-MAP -->
+      <div id="navigation">
+        <h3>MINI-MAP</h3>
+        <div id="mini-map">
+          <a
+            href="raum1.html"
+            class="map-box erreichbar"
+            style="grid-column: 3; grid-row: 1"
+          >
+            <span class="map-box-nr">Raum 1</span>
+            <span class="map-box-name">BOOT-SEQUENZ</span>
+          </a>
+
+          <div class="map-v-con" style="grid-column: 3; grid-row: 2"></div>
+
+          <a
+            href="raum3.html"
+            class="map-box erreichbar"
+            style="grid-column: 1; grid-row: 3"
+          >
+            <span class="map-box-nr">Raum 3 &#10003;</span>
+            <span class="map-box-name">FESTPLATTEN-ARCHIV</span>
+          </a>
+          <div class="map-h-con" style="grid-column: 2; grid-row: 3"></div>
+          <a
+            href="raum2.html"
+            class="map-box erreichbar"
+            style="grid-column: 3; grid-row: 3"
+          >
+            <span class="map-box-nr">Raum 2 &#10003;</span>
+            <span class="map-box-name">SYSTEM CORE</span>
+          </a>
+          <div class="map-h-con" style="grid-column: 4; grid-row: 3"></div>
+          <a
+            href="raum4.html"
+            class="map-box erreichbar"
+            style="grid-column: 5; grid-row: 3"
+          >
+            <span class="map-box-nr">Raum 4 &#10003;</span>
+            <span class="map-box-name">CPU-KERN</span>
+          </a>
+
+          <div class="map-v-con" style="grid-column: 3; grid-row: 4"></div>
+
+          <a
+            href="raum5.html"
+            class="map-box erreichbar"
+            style="grid-column: 3; grid-row: 5"
+          >
+            <span class="map-box-nr">Raum 5 &#10003;</span>
+            <span class="map-box-name">FIREWALL</span>
+          </a>
+
+          <div class="map-v-con" style="grid-column: 3; grid-row: 6"></div>
+
+          <a
+            href="raum6.html"
+            class="map-box aktiv"
+            style="grid-column: 3; grid-row: 7"
+          >
+            <span class="map-box-nr">Raum 6</span>
+            <span class="map-box-name">USB-AUSGANG</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- INTERAKTIONSBEREICH -->
+      <div id="interaktionsbereich">
+        <h3>AKTIONEN</h3>
+        <div id="aktionen">
+          <button>Speicher-Stick einsetzen</button>
+          <button>Energiechip aktivieren</button>
+          <button>Ausgang bestaetigen</button>
+        </div>
+        <div id="meldung"></div>
+      </div>
+    </div>
+  </body>
+</html>

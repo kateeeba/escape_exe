@@ -1,0 +1,986 @@
+/* ═══════════════════════════════
+   ESCAPE.EXE – style.css
+   ═══════════════════════════════ */
+
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* BODY */
+body {
+  background-color: #010e07;
+  color: #00ff88;
+  font-family: "Courier New", monospace;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════
+   GRID LAYOUT
+   Spalten: Text | Inventar | Mini-Map
+   ══════════════════════════════ */
+#spiel-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr;
+  grid-template-rows: auto auto auto auto;
+  gap: 8px;
+  padding: 10px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+#menu {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+#bildbereich {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+#textbereich {
+  grid-column: 1;
+  grid-row: 3;
+}
+#inventar {
+  grid-column: 2;
+  grid-row: 3;
+}
+#navigation {
+  grid-column: 3;
+  grid-row: 3 / 5;
+}
+#interaktionsbereich {
+  grid-column: 1 / 3;
+  grid-row: 4;
+}
+
+/* ══════════════════════════════
+   MENÜ
+   ══════════════════════════════ */
+#menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #000;
+  border: 1px solid #00ff8833;
+}
+
+#menu-titel {
+  color: #ff4444;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-right: auto;
+}
+
+#menu button {
+  background: none;
+  border: 1px solid #00ff8866;
+  color: #00ff88;
+  padding: 4px 14px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#menu button:hover {
+  background: #00ff8822;
+}
+
+/* ══════════════════════════════
+   BILDBEREICH
+   ══════════════════════════════ */
+#bildbereich {
+  background: #000;
+  border: 1px solid #00ff8833;
+  position: relative;
+  overflow: hidden;
+}
+
+#bildbereich img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Platzhalter wenn kein Bild vorhanden */
+#bildbereich .platzhalter {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ff8833;
+  font-size: 13px;
+}
+
+/* ══════════════════════════════
+   TEXTBEREICH
+   ══════════════════════════════ */
+#textbereich {
+  background: #000a04;
+  border: 1px solid #00ff8833;
+  padding: 14px;
+  line-height: 1.7;
+  font-size: 14px;
+  min-height: 90px;
+}
+
+#textbereich p {
+  color: #00ff88;
+  margin-bottom: 8px;
+}
+
+#textbereich p:last-child {
+  margin-bottom: 0;
+}
+
+/* ══════════════════════════════
+   INVENTAR
+   ══════════════════════════════ */
+#inventar {
+  background: #000a04;
+  border: 1px solid #00ff8833;
+  padding: 14px;
+}
+
+#inventar h3 {
+  font-size: 16px;
+  color: #00cc66;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #00ff8822;
+}
+
+#inv-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+#inv-tabelle thead tr {
+  border-bottom: 1px solid #00ff8833;
+}
+
+#inv-tabelle th {
+  text-align: left;
+  padding: 6px 8px;
+  font-size: 11px;
+  color: #00cc66;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+#inv-tabelle tbody tr {
+  border-bottom: 1px solid #00ff8811;
+  height: 44px;
+}
+
+#inv-tabelle tbody tr:hover {
+  background: #00ff8808;
+}
+
+/* Leere Inventar-Slots */
+#inv-tabelle tr.inv-leer td {
+  color: #00ff8822;
+  font-size: 12px;
+}
+
+#inv-tabelle td:first-child {
+  width: 44px;
+  padding: 6px;
+  text-align: center;
+}
+
+#inv-tabelle td:first-child img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+#inv-tabelle td:last-child {
+  padding: 6px 8px;
+  font-size: 13px;
+  color: #00ff88;
+}
+
+/* ══════════════════════════════
+   NAVIGATION
+   ══════════════════════════════ */
+#navigation {
+  background: #000a04;
+  border: 1px solid #00ff8833;
+  padding: 14px;
+}
+
+#navigation h3 {
+  font-size: 16px;
+  color: #00cc66;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #00ff8822;
+}
+
+#navigation a {
+  color: #00ff88;
+  text-decoration: none;
+  border: 1px solid #00ff8844;
+  padding: 5px 16px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 6px;
+}
+
+#navigation a:hover {
+  background: #00ff8822;
+  border-color: #00ff88;
+}
+
+#navigation a.gesperrt {
+  color: #00ff8833;
+  border-color: #00ff8820;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Fix: map-raum Links überschreiben den #navigation a Stil */
+#navigation a.map-raum {
+  display: flex; /* flex wiederherstellen */
+  padding: 0; /* padding von #navigation a entfernen */
+  margin-right: 0; /* margin von #navigation a entfernen */
+  margin-bottom: 0;
+}
+
+/* ══════════════════════════════
+   INTERAKTIONSBEREICH
+   ══════════════════════════════ */
+#interaktionsbereich {
+  background: #000a04;
+  border: 1px solid #00ff8833;
+  padding: 14px;
+  min-height: 70px;
+}
+
+#interaktionsbereich h3 {
+  font-size: 16px;
+  color: #00cc66;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #00ff8822;
+}
+
+#aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+#aktionen button {
+  background: none;
+  border: 1px solid #00ff8844;
+  color: #00ff88;
+  padding: 5px 16px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#aktionen button:hover {
+  background: #00ff8822;
+  border-color: #00ff88;
+}
+
+#aktionen button:disabled {
+  color: #00ff8833;
+  border-color: #00ff8820;
+  cursor: not-allowed;
+}
+
+/* Meldungen */
+#meldung {
+  margin-top: 8px;
+  font-size: 13px;
+  min-height: 20px;
+}
+
+#meldung.erfolg {
+  color: #00ff88;
+}
+#meldung.fehler {
+  color: #ff4444;
+}
+#meldung.info {
+  color: #ffcc00;
+}
+
+/* ══════════════════════════════
+   ANIMATIONEN
+   ══════════════════════════════ */
+
+/* CPU-Puls */
+#cpu-puls {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff4444;
+  display: none;
+}
+
+#cpu-puls.aktiv {
+  display: block;
+  animation: puls 1.4s ease-in-out infinite;
+}
+
+@keyframes puls {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(1.5);
+  }
+}
+
+/* Firewall-Öffnung */
+@keyframes firewall-auf {
+  from {
+    clip-path: inset(0 50% 0 50%);
+  }
+  to {
+    clip-path: inset(0 0% 0 0%);
+  }
+}
+
+.firewall-animation {
+  animation: firewall-auf 0.9s ease forwards;
+}
+
+/* ══════════════════════════════
+   AUFGABE 1: GRADIENTEN
+   Mindestens 3 verschiedene Gradienten
+   Eingebunden über body-Klassen pro Raum
+   ══════════════════════════════ */
+
+/*GRADIENT 1: Raum 1 – Boot-Sequenz (Matrix-Regen)
+   linear-gradient: oben schwarz → unten dunkelgrün
+   Atmosphäre: dunkles System, gerade hochgefahren */
+/*.raum1 body,
+.raum1 #bildbereich {
+  background: linear-gradient(180deg, #000000 0%, #001a0a 60%, #003311 100%);
+}*/
+.raum1 #bildbereich::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 51, 17, 0.3) 60%,
+    rgba(0, 80, 30, 0.5) 100%
+  );
+  pointer-events: none;
+}
+
+/*GRADIENT 2: Raum 4 – CPU-Kern (Überhitzung / Lava)
+   radial-gradient: Mitte dunkelrot → außen schwarz
+   Atmosphäre: Hitze im Zentrum, gefährlich */
+/*.raum4 #bildbereich {
+  background: radial-gradient(
+    ellipse at center,
+    #3a0000 0%,
+    #1a0000 50%,
+    #000000 100%
+  );
+}*/
+.raum4 #bildbereich::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(80, 0, 0, 0.5) 0%,
+    rgba(30, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  pointer-events: none;
+}
+
+/*GRADIENT 3: Raum 5 – Firewall (Alarm-Zustand)
+   linear-gradient: diagonal, rotschattierend
+   Atmosphäre: Alarm, Gefahr, Sperrzustand */
+/*.raum5 #bildbereich {
+  background: linear-gradient(
+    135deg,
+    #1a0000 0%,
+    #330000 30%,
+    #200000 60%,
+    #0a0000 100%
+  );
+}*/
+.raum5 #bildbereich::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(60, 0, 0, 0.5) 0%,
+    rgba(120, 0, 0, 0.3) 30%,
+    rgba(60, 0, 0, 0.5) 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+}
+
+.raum-item {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+}
+
+#item-fragment1 {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 8%;
+}
+#item-fragment2 {
+  width: 80px;
+  height: 80px;
+  top: 8%;
+  right: 12%;
+}
+#item-fragment3 {
+  width: 75px;
+  height: 75px;
+  top: 40%;
+  left: 45%;
+}
+#item-fragment4 {
+  width: 80px;
+  height: 80px;
+  bottom: 15%;
+  left: 20%;
+}
+#item-speicherstick {
+  width: 70px;
+  height: 70px;
+  bottom: 12%;
+  right: 15%;
+}
+#item-adminkey {
+  width: 55px;
+  height: 55px;
+  top: 5%;
+  left: 48%;
+  opacity: 0.3;
+}
+
+/* Basis: alle Items haben eine Transition
+   damit der Effekt weich ein- und ausgeht  */
+.raum-item {
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    filter 0.2s ease;
+}
+
+/* ── Hover-Effekt 1: Fragment 1 + 2 ──
+   Objekt wird größer (transform: scale)
+   Nutzung von opacity: volle Sichtbarkeit */
+#item-fragment1:hover,
+#item-fragment2:hover {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+/* ── Hover-Effekt 2: Fragment 3 + 4 ──
+   Objekt leuchtet grün auf (filter: drop-shadow)
+   opacity erhöht sich leicht               */
+#item-fragment3:hover,
+#item-fragment4:hover {
+  filter: drop-shadow(0 0 10px #00ff88);
+  opacity: 1;
+}
+
+/* ── Hover-Effekt 3: Speicher-Stick ──
+   Objekt wird heller + leicht größer      */
+#item-speicherstick:hover {
+  filter: brightness(1.8);
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+/* ── Hover-Effekt 4: Admin-Schlüssel ──
+   War fast unsichtbar (opacity: 0.3)
+   Beim Hovern wird er sichtbar — Belohnung
+   für aufmerksame Spieler                 */
+#item-adminkey:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px #ffcc00);
+}
+
+/* ══════════════════════════════
+   AUFGABE 4: ANIMATIONEN
+   Mindestens 2 @keyframes Animationen
+   ══════════════════════════════ */
+
+/* ── ANIMATION 1: Datei-Fragmente schweben ──
+   Fragments bewegen sich leicht auf und ab
+   Passt zu Raum 3: schwebende Dateien       */
+
+@keyframes schweben {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+#item-fragment1 {
+  animation: schweben 3s ease-in-out infinite;
+}
+#item-fragment2 {
+  animation: schweben 3.5s ease-in-out infinite;
+}
+#item-fragment3 {
+  animation: schweben 2.8s ease-in-out infinite;
+}
+#item-fragment4 {
+  animation: schweben 4s ease-in-out infinite;
+}
+
+/* ── ANIMATION 2: Warnlicht blinkt ──
+   Roter Puls auf dem Bildbereich in Raum 4
+   Passt zu Raum 4: CPU überhitzt, Alarm     */
+
+@keyframes warnblinken {
+  0%,
+  100% {
+    background: rgba(255, 0, 0, 0);
+  }
+  50% {
+    background: rgba(255, 0, 0, 0.35);
+  }
+}
+
+.raum4 #bildbereich::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  animation: warnblinken 1.2s ease-in-out infinite;
+}
+
+/* ══════════════════════════════
+   MINI-MAP – KREUZ-STRUKTUR
+   CSS Grid 5 Spalten × 7 Zeilen
+   ══════════════════════════════ */
+
+#mini-map {
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr 20px 1fr;
+  grid-template-rows: auto 16px auto 16px auto 16px auto;
+  align-items: center;
+  justify-items: center;
+  margin-top: 8px;
+}
+
+/* Raum-Box Basis */
+.map-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 6px 4px;
+  border: 1px solid #00ff8833;
+  background: #000a04;
+  font-family: "Courier New", monospace;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+  gap: 2px;
+  box-sizing: border-box;
+}
+
+.map-box-nr {
+  font-size: 11px;
+  color: #00ff8877;
+  text-align: center;
+}
+
+.map-box-name {
+  font-size: 9px;
+  color: #00ff8855;
+  letter-spacing: 0.5px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.map-lock {
+  font-size: 10px;
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  opacity: 0.5;
+}
+
+/* Aktiver Raum */
+.map-box.aktiv {
+  border-color: #00ff88;
+  background: #00ff8811;
+}
+.map-box.aktiv .map-box-nr {
+  color: #00ff88;
+  font-weight: bold;
+}
+.map-box.aktiv .map-box-name {
+  color: #00ff88aa;
+}
+
+/* Erreichbar */
+.map-box.erreichbar {
+  border-color: #00ff8844;
+}
+.map-box.erreichbar:hover {
+  border-color: #00ff88;
+  background: #00ff8808;
+}
+.map-box.erreichbar .map-box-nr {
+  color: #00ff8888;
+}
+.map-box.erreichbar .map-box-name {
+  color: #00ff8855;
+}
+
+/* Gesperrt */
+.map-box.gesperrt {
+  border-color: #ffffff11;
+  cursor: not-allowed;
+}
+.map-box.gesperrt .map-box-nr {
+  color: #ffffff22;
+}
+.map-box.gesperrt .map-box-name {
+  color: #ffffff18;
+}
+
+/* Fix: Links aus #navigation a Stil herauslösen */
+#navigation a.map-box {
+  display: flex;
+  padding: 6px 4px;
+  margin: 0;
+  border: 1px solid #00ff8844;
+}
+
+/* Vertikale Verbindungslinie */
+.map-v-con {
+  width: 2px;
+  height: 16px;
+  background: #00ff8833;
+  justify-self: center;
+}
+
+/* Horizontale Verbindungslinie */
+.map-h-con {
+  width: 100%;
+  height: 2px;
+  background: #00ff8833;
+  align-self: center;
+}
+
+/* ── RESPONSIVE: MOBIL (max. 600px) ──*/
+@media (max-width: 600px) {
+  body {
+    font-size: 13px;
+  }
+
+  #spiel-container {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 6px;
+  }
+
+  #menu {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px 10px;
+  }
+  #menu-titel {
+    font-size: 13px;
+    width: 100%;
+  }
+  #menu button {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+
+  #textbereich {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  #inv-tabelle td:first-child img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .map-box {
+    padding: 4px 2px;
+  }
+  .map-box-nr {
+    font-size: 9px;
+  }
+  .map-box-name {
+    font-size: 8px;
+  }
+
+  #aktionen {
+    flex-direction: column;
+  }
+  #aktionen button {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+  }
+}
+
+/* RAUM 1: interaktive Boot-Sequenz */
+.raum1 #bildbereich {
+  aspect-ratio: 3 / 2;
+}
+
+.raum1 #bildbereich > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.raum1 #bildbereich::after {
+  z-index: 1;
+}
+
+.boot-monitor,
+.terminal-reihe {
+  position: absolute;
+  z-index: 2;
+}
+
+.boot-monitor {
+  top: 23%;
+  left: 32%;
+  width: 36%;
+  height: 32%;
+  padding: 2.2% 3%;
+  background:
+    linear-gradient(rgba(0, 255, 136, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.035) 1px, transparent 1px),
+    rgba(0, 8, 7, 0.88);
+  background-size: 12px 12px;
+  border: 1px solid #00ff88;
+  box-shadow:
+    0 0 12px #00ff8855,
+    inset 0 0 22px #00ff8815;
+  text-align: center;
+}
+
+.boot-monitor h2 {
+  font-size: clamp(12px, 2vw, 27px);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5%;
+  text-shadow: 0 0 8px #00ff88;
+}
+
+.boot-monitor p {
+  font-size: clamp(6px, 1vw, 14px);
+  letter-spacing: 0.08em;
+  margin-bottom: 5%;
+  color: #ff4b55;
+}
+
+.boot-fortschritt {
+  display: inline-block;
+  width: 74%;
+  height: clamp(8px, 2vw, 24px);
+  border: 1px solid #00ff88;
+  padding: 2px;
+  vertical-align: middle;
+  box-shadow: 0 0 7px #00ff8866;
+}
+
+.boot-balken {
+  width: 73%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #00ff88 0,
+    #00ff88 8%,
+    transparent 8%,
+    transparent 10%
+  );
+  filter: drop-shadow(0 0 3px #00ff88);
+}
+
+.boot-monitor strong {
+  display: inline-block;
+  width: 20%;
+  font-size: clamp(10px, 2vw, 28px);
+  vertical-align: middle;
+}
+
+.boot-log {
+  margin-top: 5%;
+  padding-top: 3%;
+  border-top: 1px solid #00ff8833;
+  color: #00cc66;
+  font-size: clamp(5px, 0.7vw, 10px);
+  line-height: 1.7;
+  text-align: left;
+}
+
+.terminal-reihe {
+  left: 11%;
+  bottom: 19%;
+  width: 78%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.diagnose-terminal {
+  width: 25%;
+  min-height: clamp(70px, 14vw, 175px);
+  padding: 2% 1.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(4px, 1vw, 12px);
+  color: #00ffb0;
+  background:
+    linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+    rgba(0, 8, 7, 0.94);
+  background-size: 100% 8px;
+  border: clamp(1px, 0.2vw, 3px) solid #087c68;
+  border-radius: 3px;
+  outline: 1px solid #00ff8866;
+  outline-offset: -6px;
+  box-shadow:
+    0 8px 0 #031c1a,
+    0 12px 15px #000,
+    inset 0 0 22px #00ff8815;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.diagnose-terminal:nth-child(2) {
+  transform: translateY(5%);
+}
+
+.diagnose-terminal:hover:not(:disabled) {
+  transform: translateY(-3%);
+  box-shadow:
+    0 8px 0 #031c1a,
+    0 0 22px #00ff8899,
+    inset 0 0 22px #00ff8830;
+}
+
+.diagnose-terminal:nth-child(2):hover:not(:disabled) {
+  transform: translateY(2%);
+}
+
+.terminal-name,
+.terminal-aufgabe,
+.terminal-status {
+  display: block;
+}
+
+.terminal-name {
+  padding-bottom: 5%;
+  border-bottom: 1px solid #00ff8866;
+  font-size: clamp(7px, 1.25vw, 17px);
+}
+
+.terminal-aufgabe {
+  color: #00cc88;
+  font-size: clamp(5px, 0.85vw, 12px);
+}
+
+.terminal-status {
+  font-size: clamp(6px, 1vw, 14px);
+}
+
+.terminal-status.offline {
+  color: #ff3d4a;
+}
+
+.terminal-status.ok {
+  color: #00ff88;
+  text-shadow: 0 0 8px #00ff88;
+}
+
+.diagnose-terminal.terminal-ok {
+  border-color: #00ff88;
+  box-shadow:
+    0 8px 0 #031c1a,
+    0 0 18px #00ff8866,
+    inset 0 0 20px #00ff8825;
+}
+
+@media (max-width: 600px) {
+  .boot-monitor {
+    padding: 2% 3%;
+  }
+
+  .boot-log {
+    display: none;
+  }
+
+  .diagnose-terminal {
+    min-height: 62px;
+    gap: 3px;
+    outline-offset: -3px;
+    box-shadow:
+      0 4px 0 #031c1a,
+      0 6px 8px #000;
+  }
+}

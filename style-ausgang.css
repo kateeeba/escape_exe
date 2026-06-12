@@ -1,0 +1,427 @@
+/* ═══════════════════════════════
+   ESCAPE.EXE – style-ausgang.css
+   Atmosphäre: USB-Ausgang (blau/hell)
+   ═══════════════════════════════ */
+
+/* ── RESET ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── BODY ── */
+body {
+  background-color: #00050f;
+  color: #00cfff;
+  font-family: "Courier New", monospace;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════
+   GRID LAYOUT
+   ══════════════════════════════ */
+#spiel-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto auto auto auto auto;
+  gap: 8px;
+  padding: 10px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+#menu {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+#bildbereich {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+#textbereich {
+  grid-column: 1;
+  grid-row: 3;
+}
+#sysroot-box {
+  grid-column: 1;
+  grid-row: 4;
+}
+#inventar {
+  grid-column: 2;
+  grid-row: 3 / 7;
+}
+#navigation {
+  grid-column: 1;
+  grid-row: 5;
+}
+#interaktionsbereich {
+  grid-column: 1;
+  grid-row: 6;
+}
+
+/* ══════════════════════════════
+   MENÜ
+   ══════════════════════════════ */
+#menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #000a1a;
+  border: 1px solid #00cfff33;
+}
+
+#menu-titel {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-right: auto;
+}
+
+#menu button {
+  background: none;
+  border: 1px solid #00cfff66;
+  color: #00cfff;
+  padding: 4px 14px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#menu button:hover {
+  background: #00cfff22;
+}
+
+/* ══════════════════════════════
+   BILDBEREICH
+   ══════════════════════════════ */
+#bildbereich {
+  background: #000a1a;
+  border: 1px solid #00cfff33;
+  position: relative;
+  overflow: hidden;
+}
+
+#bildbereich img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ══════════════════════════════
+   TEXTBEREICH
+   ══════════════════════════════ */
+#textbereich {
+  background: #00050f;
+  border: 1px solid #00cfff33;
+  padding: 14px;
+  line-height: 1.7;
+  font-size: 14px;
+  min-height: 90px;
+}
+
+#textbereich p {
+  color: #00cfff;
+  margin-bottom: 8px;
+}
+
+#textbereich p:last-child {
+  margin-bottom: 0;
+}
+
+/* ══════════════════════════════
+   SYSROOT-BOX
+   ══════════════════════════════ */
+#sysroot-box {
+  background-color: #05001a;
+  border: 1px solid #aa88ff;
+  border-left: 4px solid #aa88ff;
+  border-radius: 4px;
+  padding: 12px 16px;
+}
+
+#sysroot-name {
+  display: block;
+  font-size: 11px;
+  color: #aa88ff;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+#sysroot-text {
+  font-size: 13px;
+  color: #aa88ff99;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════
+   INVENTAR
+   ══════════════════════════════ */
+#inventar {
+  background: #00050f;
+  border: 1px solid #00cfff33;
+  padding: 14px;
+}
+
+#inventar h3 {
+  font-size: 16px;
+  color: #00aadd;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #00cfff22;
+}
+
+#inv-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#inv-tabelle thead tr {
+  border-bottom: 1px solid #00cfff33;
+}
+
+#inv-tabelle th {
+  text-align: left;
+  padding: 6px 8px;
+  font-size: 11px;
+  color: #00aadd;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+#inv-tabelle tbody tr {
+  border-bottom: 1px solid #00cfff11;
+}
+
+#inv-tabelle tbody tr:hover {
+  background: #00cfff08;
+}
+
+#inv-tabelle td:first-child {
+  width: 44px;
+  padding: 8px 6px;
+  text-align: center;
+}
+
+#inv-tabelle td:first-child img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+#inv-tabelle td:last-child {
+  padding: 8px 8px;
+  font-size: 13px;
+  color: #00cfff;
+}
+
+/* ══════════════════════════════
+   NAVIGATION
+   ══════════════════════════════ */
+#navigation {
+  background: #00050f;
+  border: 1px solid #00cfff33;
+  padding: 14px;
+}
+
+#navigation h3 {
+  font-size: 16px;
+  color: #00aadd;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #00cfff22;
+}
+
+#navigation a {
+  color: #00cfff;
+  text-decoration: none;
+  border: 1px solid #00cfff44;
+  padding: 5px 16px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 6px;
+}
+
+#navigation a:hover {
+  background: #00cfff22;
+  border-color: #00cfff;
+}
+
+/* Fix: map-raum Links überschreiben den #navigation a Stil */
+#navigation a.map-raum {
+  display: flex; /* flex wiederherstellen */
+  padding: 0; /* padding von #navigation a entfernen */
+  margin-right: 0; /* margin von #navigation a entfernen */
+  margin-bottom: 0;
+}
+
+/* ══════════════════════════════
+   INTERAKTIONSBEREICH
+   ══════════════════════════════ */
+#interaktionsbereich {
+  background: #00050f;
+  border: 1px solid #00cfff33;
+  padding: 14px;
+  min-height: 70px;
+}
+
+#interaktionsbereich h3 {
+  font-size: 16px;
+  color: #00aadd;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #00cfff22;
+}
+
+#aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+#aktionen button {
+  background: none;
+  border: 1px solid #00cfff44;
+  color: #00cfff;
+  padding: 5px 16px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#aktionen button:hover {
+  background: #00cfff22;
+  border-color: #00cfff;
+}
+
+#aktionen button:disabled {
+  color: #00cfff33;
+  border-color: #00cfff20;
+  cursor: not-allowed;
+}
+
+/* Meldungen */
+#meldung {
+  margin-top: 8px;
+  font-size: 13px;
+  min-height: 20px;
+}
+
+#meldung.erfolg {
+  color: #00cfff;
+}
+#meldung.fehler {
+  color: #ff4444;
+}
+#meldung.info {
+  color: #aa88ff;
+}
+
+/* ══════════════════════════════
+   ANIMATIONEN
+   ══════════════════════════════ */
+@keyframes leuchten {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 8px #00cfff;
+  }
+  50% {
+    opacity: 0.6;
+    text-shadow: 0 0 20px #00cfff;
+  }
+}
+
+#menu-titel {
+  animation: leuchten 2.5s ease-in-out infinite;
+}
+
+/* ══════════════════════════════
+   MINI-MAP für Raum 6
+   Blau statt grün passend zur Atmosphäre
+   ══════════════════════════════ */
+
+#mini-map {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 0;
+  margin-top: 8px;
+  padding-bottom: 4px;
+}
+
+.map-raum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 74px;
+  height: 56px;
+  border: 1px solid #00cfff44;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  text-decoration: none;
+  gap: 4px;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.map-nr {
+  font-size: 10px;
+  opacity: 0.6;
+}
+.map-name {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* Aktiver Raum – blau leuchtend */
+.map-raum.aktiv {
+  background: #00cfff22;
+  border: 2px solid #00cfff;
+  color: #00cfff;
+  box-shadow: 0 0 10px #00cfff44;
+}
+
+/* Erreichbar */
+.map-raum.erreichbar {
+  background: #00050f;
+  border: 1px solid #00cfff66;
+  color: #00cfff;
+  cursor: pointer;
+}
+
+.map-raum.erreichbar:hover {
+  transform: scale(1.08);
+  border-color: #00cfff;
+  background: #00cfff11;
+}
+
+/* Gesperrt */
+.map-raum.gesperrt {
+  background: #050505;
+  border: 1px solid #ffffff11;
+  color: #ffffff22;
+  cursor: not-allowed;
+}
+
+/* Pfeil */
+.map-pfeil {
+  color: #00cfff44;
+  font-size: 16px;
+  padding: 0 4px;
+  user-select: none;
+}
