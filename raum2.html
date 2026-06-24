@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <title>ESCAPE.EXE - Raum 2: System Core</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="inventar.js" defer></script>
+    <script src="dialog.js" defer></script>
   </head>
   <body class="raum2">
     <div id="spiel-container">
@@ -18,18 +20,34 @@
       <!-- BILDBEREICH -->
       <div id="bildbereich">
         <img src="bilder/raum2.png" alt="System Core" />
+        <div id="energieverteiler-status" aria-live="polite">
+          <strong>ENERGIEVERTEILER</strong>
+          <span>OFFLINE</span>
+        </div>
+        <div id="tunnel-kabel" aria-label="Lose Stromkabel">
+          <button class="tunnel-kabel tunnel-kabel-rot" type="button" data-kabel="rot" aria-label="Rotes Kabel auswählen">
+            <img src="bilder/items/kabel_red.png" alt="" />
+          </button>
+          <button class="tunnel-kabel tunnel-kabel-blau" type="button" data-kabel="blau" aria-label="Blaues Kabel auswählen">
+            <img src="bilder/items/kabel_blue.png" alt="" />
+          </button>
+          <button class="tunnel-kabel tunnel-kabel-gelb" type="button" data-kabel="gelb" aria-label="Gelbes Kabel auswählen">
+            <img src="bilder/items/kabel_yellow.png" alt="" />
+          </button>
+        </div>
+        <button id="sysroot-npc" type="button" aria-haspopup="dialog">
+          <span class="sysroot-status"></span>
+          <span class="sysroot-label">SYSROOT</span>
+          <span class="sysroot-hinweis">KI-TERMINAL // ANSPRECHEN</span>
+        </button>
       </div>
 
       <!-- TEXTBEREICH -->
       <div id="textbereich">
+        <p>Die Energieversorgung ist besch&auml;digt.</p>
         <p>
-          Ein dunkler Tunnel voller riesiger Kabel und Stromleitungen. Die
-          Energieversorgung des Systems ist besch&auml;digt. Strom flackert
-          unkontrolliert durch den Tunnel.
-        </p>
-        <p>
-          Drei Kabel h&auml;ngen lose herum. Nur das richtige schlie&szlig;t den
-          Stromkreis.
+          <strong>SYSROOT:</strong> &bdquo;Finde das richtige Kabel, um den
+          Tunnel wieder mit Strom zu versorgen.&ldquo;
         </p>
       </div>
 
@@ -49,22 +67,6 @@
                 <img src="bilder/items/debug-lupe.png" alt="Debug-Lupe" />
               </td>
               <td>Debug-Lupe</td>
-            </tr>
-            <tr class="inv-leer">
-              <td></td>
-              <td>&ndash;</td>
-            </tr>
-            <tr class="inv-leer">
-              <td></td>
-              <td>&ndash;</td>
-            </tr>
-            <tr class="inv-leer">
-              <td></td>
-              <td>&ndash;</td>
-            </tr>
-            <tr class="inv-leer">
-              <td></td>
-              <td>&ndash;</td>
             </tr>
           </tbody>
         </table>
@@ -130,12 +132,26 @@
       <!-- INTERAKTIONSBEREICH -->
       <div id="interaktionsbereich">
         <h3>AKTIONEN</h3>
-        <div id="aktionen">
-          <button>Rotes Kabel</button>
-          <button>Blaues Kabel</button>
-          <button>Gelbes Kabel</button>
-        </div>
+        <div id="aktionen">W&auml;hle ein Kabel aus.</div>
         <div id="meldung"></div>
+      </div>
+    </div>
+
+    <div
+      id="sysroot-dialog"
+      class="dialog-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sysroot-dialog-titel"
+      hidden
+    >
+      <div class="dialog-box">
+        <h2 id="sysroot-dialog-titel">SYSROOT</h2>
+        <p id="sysroot-dialog-text"></p>
+        <div id="sysroot-dialog-antworten" class="dialog-answers"></div>
+        <button id="sysroot-dialog-schliessen" type="button">
+          Schlie&szlig;en
+        </button>
       </div>
     </div>
   </body>

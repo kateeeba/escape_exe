@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>ESCAPE.EXE – Raum 1: Boot-Sequenz</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="inventar.js" defer></script>
   </head>
   <body class="raum1">
     <div id="spiel-container">
@@ -80,23 +81,6 @@
               </td>
               <td>Debug-Lupe</td>
             </tr>
-            <!-- Slot 2-5: leer (werden per JS befüllt) -->
-            <tr class="inv-leer">
-              <td></td>
-              <td>–</td>
-            </tr>
-            <tr class="inv-leer">
-              <td></td>
-              <td>–</td>
-            </tr>
-            <tr class="inv-leer">
-              <td></td>
-              <td>–</td>
-            </tr>
-            <tr class="inv-leer">
-              <td></td>
-              <td>–</td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -172,21 +156,5 @@
         <div id="meldung"></div>
       </div>
     </div>
-    <script>
-      const meldung = document.getElementById("meldung");
-      const terminals = document.querySelectorAll(".diagnose-terminal");
-
-      terminals.forEach((terminal) => {
-        terminal.addEventListener("click", () => {
-          const status = terminal.querySelector(".terminal-status");
-          const name = terminal.dataset.terminal;
-          status.className = "terminal-status ok";
-          status.textContent = "OK";
-          terminal.classList.add("terminal-ok");
-          meldung.className = "erfolg";
-          meldung.textContent = `Terminal ${name} wurde aktiviert.`;
-        });
-      });
-    </script>
   </body>
 </html>

@@ -5,6 +5,7 @@
     <title>ESCAPE.EXE - Raum 6: USB-Ausgang</title>
     <link rel="stylesheet" href="style-ausgang.css" />
     <link rel="stylesheet" href="style.css" />
+    <script src="inventar.js" defer></script>
   </head>
   <body class="raum6">
     <div id="spiel-container">
@@ -30,6 +31,9 @@
         </p>
         <p style="color: #ffcc00">
           SYSROOT: M&ouml;chtest du das System wirklich verlassen?
+        </p>
+        <p id="usb-abschluss-text" hidden>
+          Du verl&auml;sst das System und kehrst in die echte Welt zur&uuml;ck.
         </p>
       </div>
 
@@ -146,9 +150,15 @@
       <div id="interaktionsbereich">
         <h3>AKTIONEN</h3>
         <div id="aktionen">
-          <button>Speicher-Stick einsetzen</button>
-          <button>Energiechip aktivieren</button>
-          <button>Ausgang bestaetigen</button>
+          <button id="btn-usb-stick" type="button">
+            Speicher-Stick einsetzen
+          </button>
+          <button id="btn-energiechip" type="button">
+            Energiechip aktivieren
+          </button>
+          <button id="btn-ausgang" type="button">
+            Ausgang best&auml;tigen
+          </button>
         </div>
         <div id="meldung"></div>
       </div>

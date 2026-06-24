@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>ESCAPE.EXE - Raum 4: CPU-Kern</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="inventar.js" defer></script>
   </head>
   <body class="raum4">
     <div id="spiel-container">
@@ -27,7 +28,8 @@
           &uuml;berhitzt. Warnmeldungen erscheinen &uuml;berall im Raum.
         </p>
         <p style="color: #ffcc00">
-          SYSROOT: Eine Reparatur wird nicht empfohlen.
+          SYSROOT: &bdquo;Eine Reparatur wird nicht empfohlen. Der Kern ist zu
+          instabil.&ldquo;
         </p>
       </div>
 
@@ -57,14 +59,6 @@
                 <img src="bilder/items/debug-lupe.png" alt="Debug-Lupe" />
               </td>
               <td>Debug-Lupe</td>
-            </tr>
-            <tr class="inv-leer">
-              <td></td>
-              <td>&ndash;</td>
-            </tr>
-            <tr class="inv-leer">
-              <td></td>
-              <td>&ndash;</td>
             </tr>
           </tbody>
         </table>
@@ -137,9 +131,11 @@
       <div id="interaktionsbereich">
         <h3>AKTIONEN</h3>
         <div id="aktionen">
-          <button id="btn-schritt1">1. Kabel anschlie&szlig;en</button>
-          <button id="btn-schritt2">2. Energiechip einsetzen</button>
-          <button id="btn-schritt3">3. System starten</button>
+          <button id="btn-schritt1">
+            1. Stromleiter-Kabel anschlie&szlig;en
+          </button>
+          <button id="btn-schritt2" hidden>2. Energiechip entnehmen</button>
+          <button id="btn-schritt3" hidden>3. System starten</button>
         </div>
         <div id="meldung"></div>
       </div>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>ESCAPE.EXE - Raum 3: Festplatten-Archiv</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="inventar.js" defer></script>
   </head>
   <body class="raum3">
     <div id="spiel-container">
@@ -22,26 +23,41 @@
         <div
           class="raum-item"
           id="item-fragment1"
+          role="button"
+          tabindex="0"
+          aria-label="Fragment 1 aufnehmen"
           style="background-image: url(&quot;bilder/items/fragment1.png&quot;)"
         ></div>
         <div
           class="raum-item"
           id="item-fragment2"
+          role="button"
+          tabindex="0"
+          aria-label="Fragment 2 aufnehmen"
           style="background-image: url(&quot;bilder/items/fragment2.png&quot;)"
         ></div>
         <div
           class="raum-item"
           id="item-fragment3"
+          role="button"
+          tabindex="0"
+          aria-label="Fragment 3 aufnehmen"
           style="background-image: url(&quot;bilder/items/fragment3.png&quot;)"
         ></div>
         <div
           class="raum-item"
           id="item-fragment4"
+          role="button"
+          tabindex="0"
+          aria-label="Fragment 4 aufnehmen"
           style="background-image: url(&quot;bilder/items/fragment4.png&quot;)"
         ></div>
         <div
           class="raum-item"
           id="item-speicherstick"
+          role="button"
+          tabindex="0"
+          aria-label="Speicher-Stick aufnehmen"
           style="
             background-image: url(&quot;bilder/items/speicherstick.png&quot;);
           "
@@ -49,22 +65,27 @@
         <div
           class="raum-item"
           id="item-adminkey"
-          style="background-image: url(&quot;bilder/items/adminKey.png&quot;)"
+          role="button"
+          tabindex="0"
+          aria-label="Admin-Schlüssel aufnehmen"
+          style="background-image: url(&quot;bilder/items/admin_key.png&quot;)"
         ></div>
       </div>
 
       <!-- TEXTBEREICH -->
       <div id="textbereich">
         <p>
-          Ein gro&szlig;er digitaler Archivraum mit schwebenden Dateien und
-          besch&auml;digten Daten. Alte Systemdateien treiben durch den Raum.
+          Du betrittst das Festplatten-Archiv. Besch&auml;digte Dateien und
+          Datenfragmente schweben durch den Raum.
         </p>
         <p>
-          Eine Datei f&auml;llt auf:
-          <span style="color: #ff4444">log_old.txt: Zugriffscode besch&auml;digt</span>
+          <span style="color: #ff4444"
+            >log_old.txt: Zugriffscode besch&auml;digt</span
+          >
         </p>
         <p style="color: #ffcc00">
-          SYSROOT: Alte Dateien. Nichts Interessantes hier. Geh weiter.
+          SYSROOT: &bdquo;Vielleicht enthalten die Fragmente die fehlenden
+          Daten.&ldquo;
         </p>
       </div>
 
@@ -80,32 +101,16 @@
           </thead>
           <tbody>
             <tr>
-              <td><img src="bilder/items/kabel.png" alt="Kabelst&uuml;ck" /></td>
-              <td>Kabelst&uuml;ck</td>
-            </tr>
-            <tr>
-              <td>
-                <img src="bilder/items/passwort.png" alt="Passwort-Zettel" />
-              </td>
-              <td>Passwort-Zettel</td>
-            </tr>
-            <tr>
-              <td>
-                <img src="bilder/items/energiechip.png" alt="Energiechip" />
-              </td>
-              <td>Energiechip</td>
-            </tr>
-            <tr>
-              <td>
-                <img src="bilder/items/admin.png" alt="Admin-Schl&uuml;ssel" />
-              </td>
-              <td>Admin-Schl&uuml;ssel</td>
-            </tr>
-            <tr>
               <td>
                 <img src="bilder/items/debug-lupe.png" alt="Debug-Lupe" />
               </td>
               <td>Debug-Lupe</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="bilder/items/kabel.png" alt="Stromleiter-Kabel" />
+              </td>
+              <td>Stromleiter-Kabel</td>
             </tr>
           </tbody>
         </table>
@@ -175,12 +180,13 @@
       <div id="interaktionsbereich">
         <h3>AKTIONEN</h3>
         <div id="aktionen">
-          <button>Fragment 1 aufnehmen</button>
-          <button>Fragment 2 aufnehmen</button>
-          <button>Fragment 3 aufnehmen</button>
-          <button>Fragment 4 aufnehmen</button>
-          <button>Speicher-Stick aufnehmen</button>
-          <button>Datei reparieren</button>
+          <ul id="aktionshinweise">
+            <li>Untersuche die schwebenden Fragmente</li>
+            <li>Suche nach n&uuml;tzlichen Gegenst&auml;nden</li>
+          </ul>
+          <button id="datei-reparieren" type="button" hidden>
+            Datei reparieren
+          </button>
         </div>
         <div id="meldung"></div>
       </div>

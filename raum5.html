@@ -5,6 +5,7 @@
     <title>ESCAPE.EXE - Raum 5: Firewall</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="style-firewall.css" />
+    <script src="inventar.js" defer></script>
   </head>
   <body class="raum5">
     <div id="spiel-container">
@@ -51,16 +52,14 @@
 
       <!-- TEXTBEREICH -->
       <div id="textbereich">
-        <p>
-          Ein roter Sicherheitsbereich voller Alarmlichter. Eine riesige
-          Firewall blockiert den Weg zum Ausgang.
-        </p>
+        <p>Firewall aktiv.</p>
+        <p>Zugriff verweigert.</p>
         <p style="color: #ffcc00">
-          An der Wand: Rechner denken in 0 und 1. Terminal: Zugriff erlaubt ab
-          Wert &gt; 9.
+          SYSROOT: &bdquo;Die Firewall akzeptiert nur numerische
+          Zugangscodes.&ldquo;
         </p>
-        <p style="color: #ffcc00">
-          SYSROOT: Der Code ist 2. Oder 4. Oder vielleicht 1010?
+        <p style="color: #ff4444">
+          WARNUNG: Zugriff erlaubt ab Wert &gt; 9
         </p>
       </div>
 
@@ -162,14 +161,11 @@
 
           <div class="map-v-con" style="grid-column: 3; grid-row: 6"></div>
 
-          <a
-            href="raum6.html"
-            class="map-box erreichbar"
-            style="grid-column: 3; grid-row: 7"
-          >
+          <div class="map-box gesperrt" style="grid-column: 3; grid-row: 7">
             <span class="map-box-nr">Raum 6</span>
             <span class="map-box-name">USB-AUSGANG</span>
-          </a>
+            <span class="map-lock">&#128274;</span>
+          </div>
         </div>
       </div>
 
@@ -177,10 +173,12 @@
       <div id="interaktionsbereich">
         <h3>AKTIONEN</h3>
         <div id="aktionen">
-          <button>Debug-Lupe benutzen</button>
+          <button id="btn-debug-lupe" type="button">
+            Debug-Lupe verwenden
+          </button>
         </div>
         <input type="text" id="code-input" placeholder="Code eingeben..." />
-        <button id="btn-bestaetigen">Best&auml;tigen</button>
+        <button id="btn-bestaetigen" type="button">Best&auml;tigen</button>
         <div id="meldung"></div>
       </div>
     </div>

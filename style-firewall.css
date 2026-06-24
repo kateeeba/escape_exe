@@ -216,3 +216,49 @@
 .raum5 #btn-bestaetigen:hover {
   background: #ff444422;
 }
+
+.raum5 #bildbereich.firewall-offen {
+  animation: none;
+  box-shadow:
+    inset 0 0 55px #00ff8877,
+    0 0 18px #00ff8844;
+}
+
+.raum5 #bildbereich.firewall-offen::after {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 255, 136, 0.3) 0%,
+    rgba(0, 120, 70, 0.18) 48%,
+    rgba(0, 20, 10, 0.28) 100%
+  );
+  animation: firewall-oeffnen 900ms ease-out;
+}
+
+.raum5 #bildbereich.firewall-offen #fw-alarmlicht-links,
+.raum5 #bildbereich.firewall-offen #fw-alarmlicht-rechts {
+  animation: none;
+  opacity: 0.2;
+}
+
+.raum5 #bildbereich.firewall-offen #fw-schloss {
+  opacity: 0;
+  transform: scale(1.35);
+}
+
+@keyframes firewall-oeffnen {
+  from {
+    opacity: 0;
+    filter: brightness(2);
+  }
+  to {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+.raum5 #code-input:disabled,
+.raum5 #btn-bestaetigen:disabled,
+.raum5 #btn-debug-lupe:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
