@@ -5,6 +5,7 @@
     <title>ESCAPE.EXE - Raum 3: Festplatten-Archiv</title>
     <link rel="stylesheet" href="style.css" />
     <script src="inventar.js" defer></script>
+    <script src="dialog.js" defer></script>
   </head>
   <body class="raum3">
     <div id="spiel-container">
@@ -74,6 +75,7 @@
 
       <!-- TEXTBEREICH -->
       <div id="textbereich">
+        <div class="raumtext">
         <p>
           Du betrittst das Festplatten-Archiv. Besch&auml;digte Dateien und
           Datenfragmente schweben durch den Raum.
@@ -87,6 +89,11 @@
           SYSROOT: &bdquo;Vielleicht enthalten die Fragmente die fehlenden
           Daten.&ldquo;
         </p>
+        </div>
+        <div class="hint-box">
+          <button id="btn-hinweis" type="button">SYSROOT-HINWEIS</button>
+          <p data-sysroot-output hidden></p>
+        </div>
       </div>
 
       <!-- INVENTAR -->

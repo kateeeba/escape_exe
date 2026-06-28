@@ -5,6 +5,7 @@
     <title>ESCAPE.EXE – Raum 1: Boot-Sequenz</title>
     <link rel="stylesheet" href="style.css" />
     <script src="inventar.js" defer></script>
+    <script src="dialog.js" defer></script>
   </head>
   <body class="raum1">
     <div id="spiel-container">
@@ -53,6 +54,7 @@
 
       <!-- TEXTBEREICH -->
       <div id="textbereich">
+        <div class="raumtext">
         <p>
           Du arbeitest spät abends an deinem alten Computer. Plötzlich beginnt
           der Bildschirm zu flackern, Funken schlagen aus dem Monitor und du
@@ -62,6 +64,11 @@
           Die Boot-Sequenz ist bei 73 % eingefroren. Klicke auf die drei
           Terminals, um sie zu aktivieren.
         </p>
+        </div>
+        <div class="hint-box">
+          <button id="btn-hinweis" type="button">SYSROOT-HINWEIS</button>
+          <p data-sysroot-output hidden></p>
+        </div>
       </div>
       <!-- INVENTAR -->
       <div id="inventar">

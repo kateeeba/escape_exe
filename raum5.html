@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="style-firewall.css" />
     <script src="inventar.js" defer></script>
+    <script src="dialog.js" defer></script>
   </head>
   <body class="raum5">
     <div id="spiel-container">
@@ -52,6 +53,7 @@
 
       <!-- TEXTBEREICH -->
       <div id="textbereich">
+        <div class="raumtext">
         <p>Firewall aktiv.</p>
         <p>Zugriff verweigert.</p>
         <p style="color: #ffcc00">
@@ -61,6 +63,11 @@
         <p style="color: #ff4444">
           WARNUNG: Zugriff erlaubt ab Wert &gt; 9
         </p>
+        </div>
+        <div class="hint-box">
+          <button id="btn-hinweis" type="button">SYSROOT-HINWEIS</button>
+          <p data-sysroot-output hidden></p>
+        </div>
       </div>
 
       <!-- INVENTAR -->

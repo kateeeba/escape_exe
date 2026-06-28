@@ -1,6 +1,3 @@
-const STORAGE_KEY = "gameState";
-const LEGACY_STORAGE_KEY = "escapeExeInventar";
-
 const INITIAL_STATE = {
   inventory: ["Debug-Lupe"],
   activeItem: null,
@@ -29,6 +26,14 @@ function stateZuruecksetzen() {
   state.inventory = [...INITIAL_STATE.inventory];
   state.activeItem = INITIAL_STATE.activeItem;
   state.world = { ...INITIAL_STATE.world };
+}
+
+function stateSnapshot() {
+  return {
+    inventory: [...state.inventory],
+    activeItem: state.activeItem,
+    world: { ...state.world },
+  };
 }
 
 const gegenstaende = {
@@ -100,41 +105,15 @@ const raumStatus = {
   6: "usbDone",
 };
 
-function saveGame() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
-function loadGame() {
-  const saved = localStorage.getItem(STORAGE_KEY);
-
-  if (saved) {
-    try {
-      const geladenerState = JSON.parse(saved);
-      state.inventory = Array.isArray(geladenerState.inventory)
-        ? geladenerState.inventory
-        : [];
-      state.activeItem = geladenerState.activeItem ?? null;
-      state.world = {
-        ...INITIAL_STATE.world,
-        ...(geladenerState.world || {}),
-      };
-    } catch {
-      stateZuruecksetzen();
-    }
-  } else {
-    const altesInventar = localStorage.getItem(LEGACY_STORAGE_KEY);
-
-    try {
-      const alteDaten = altesInventar ? JSON.parse(altesInventar) : [];
-      state.inventory = Array.isArray(alteDaten)
-        ? alteDaten.map((item) => alteInventarNamen[item] || item)
-        : [...INITIAL_STATE.inventory];
-      state.activeItem = null;
-      state.world = { ...INITIAL_STATE.world };
-    } catch {
-      stateZuruecksetzen();
-    }
-  }
+function stateUebernehmen(geladenerState) {
+  state.inventory = Array.isArray(geladenerState?.inventory)
+    ? geladenerState.inventory.map((item) => alteInventarNamen[item] || item)
+    : [];
+  state.activeItem = geladenerState?.activeItem ?? null;
+  state.world = {
+    ...INITIAL_STATE.world,
+    ...(geladenerState?.world || {}),
+  };
 
   state.inventory = Array.isArray(state.inventory)
     ? [...new Set(state.inventory.filter((item) => gegenstaende[item]))]
@@ -181,8 +160,100 @@ function loadGame() {
     state.world.terminalBOk = true;
     state.world.terminalCOk = true;
   }
+}
 
-  saveGame();
+function spielstandIstLeer(geladenerState) {
+  return (
+    Array.isArray(geladenerState?.inventory) &&
+    geladenerState.inventory.length === 0 &&
+    geladenerState?.activeItem === null &&
+    geladenerState?.world &&
+    Object.keys(geladenerState.world).length === 0
+  );
+}
+
+function spielMeldungAnzeigen(text, typ = "sysroot-meldung") {
+  const meldung = document.querySelector("#meldung");
+  if (!meldung) return;
+
+  meldung.className = typ;
+  meldung.textContent = text;
+}
+
+async function saveGame(options = {}) {
+  try {
+    const antwort = await fetch("/api/state", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(stateSnapshot()),
+    });
+
+    if (!antwort.ok) {
+      throw new Error("Speicher-Server antwortet nicht.");
+    }
+
+    if (options.meldung) {
+      spielMeldungAnzeigen("SYSROOT:\nSpielstand gespeichert.");
+    }
+
+    return true;
+  } catch (error) {
+    console.error(error);
+
+    if (options.meldung) {
+      spielMeldungAnzeigen(
+        "SYSROOT:\nVerbindung zum Speicher-Server fehlgeschlagen.",
+        "fehler",
+      );
+    }
+
+    return false;
+  }
+}
+
+async function loadGame(options = {}) {
+  try {
+    const antwort = await fetch("/api/state");
+    if (!antwort.ok) {
+      throw new Error("Speicher-Server antwortet nicht.");
+    }
+
+    const geladenerState = await antwort.json();
+
+    if (spielstandIstLeer(geladenerState)) {
+      if (options.meldung) {
+        spielMeldungAnzeigen(
+          "SYSROOT:\nKein gespeicherter Spielstand gefunden.",
+          "fehler",
+        );
+      }
+      return false;
+    }
+
+    stateUebernehmen(geladenerState);
+    if (options.render !== false) {
+      spielansichtAktualisieren();
+    }
+
+    if (options.meldung) {
+      spielMeldungAnzeigen("SYSROOT:\nSpielstand geladen.");
+    }
+
+    return true;
+  } catch (error) {
+    console.error(error);
+
+    if (options.meldung) {
+      spielMeldungAnzeigen(
+        "SYSROOT:\nVerbindung zum Speicher-Server fehlgeschlagen.",
+        "fehler",
+      );
+    }
+
+    return false;
+  }
 }
 
 function inventarAuffuellen(tabellenKoerper) {
@@ -297,10 +368,9 @@ function raumIstFreigeschaltet(raumNummer) {
 
 let resetModalVorherigerFokus = null;
 
-function resetGame() {
-  localStorage.removeItem(STORAGE_KEY);
-  localStorage.removeItem(LEGACY_STORAGE_KEY);
+async function resetGame() {
   stateZuruecksetzen();
+  await saveGame();
   window.location.href = "raum1.html";
 }
 
@@ -410,6 +480,24 @@ function neuesSpielEinrichten() {
   ).find((button) => button.textContent.trim() === "Neues Spiel");
 
   neuesSpielButton?.addEventListener("click", openResetModal);
+}
+
+function speicherButtonsEinrichten() {
+  const buttons = Array.from(document.querySelectorAll("button"));
+  const speichernButton = buttons.find(
+    (button) => button.textContent.trim() === "Speichern",
+  );
+  const ladenButton = buttons.find(
+    (button) => button.textContent.trim() === "Laden",
+  );
+
+  speichernButton?.addEventListener("click", () => {
+    saveGame({ meldung: true });
+  });
+
+  ladenButton?.addEventListener("click", () => {
+    loadGame({ meldung: true });
+  });
 }
 
 function updateMiniMap() {
@@ -1029,6 +1117,19 @@ function raum5Einrichten() {
   firewallStatusDarstellen();
 }
 
+function spielansichtAktualisieren() {
+  renderInventory();
+  gesammelteRaumobjekteAusblenden();
+  updateMiniMap();
+  checkGameState();
+  raum1Einrichten();
+  raum2Einrichten();
+  raum3Einrichten();
+  raum4Einrichten();
+  raum5Einrichten();
+  raum6Einrichten();
+}
+
 window.state = state;
 window.saveGame = saveGame;
 window.loadGame = loadGame;
@@ -1040,9 +1141,10 @@ window.openResetModal = openResetModal;
 window.closeResetModal = closeResetModal;
 window.resetGame = resetGame;
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadGame();
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadGame({ render: false });
   neuesSpielEinrichten();
+  speicherButtonsEinrichten();
   scrollbarEinrichten();
   renderInventory();
   gesammelteRaumobjekteAusblenden();

@@ -773,9 +773,33 @@ body.reset-modal-offen {
   cursor: pointer;
 }
 
+.hint-box {
+  margin-top: 12px;
+  padding: 9px 12px;
+  background: #080501;
+  border: 1px solid #ff990044;
+  border-left: 4px solid #ff9900;
+}
+
+.hint-box #btn-hinweis {
+  background: none;
+  border: 1px solid #ff990066;
+  color: #ff9900;
+  padding: 5px 16px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  cursor: pointer;
+}
+
 #aktionen button:hover {
   background: #00ff8822;
   border-color: #00ff88;
+}
+
+.hint-box #btn-hinweis:hover,
+.hint-box #btn-hinweis:focus-visible {
+  background: #ff990022;
+  border-color: #ff9900;
 }
 
 #aktionen button:disabled {
@@ -800,6 +824,13 @@ body.reset-modal-offen {
 }
 #meldung.info {
   color: #ffcc00;
+}
+
+#meldung.sysroot-meldung,
+.hint-box .sysroot-meldung {
+  color: #ff9900;
+  margin: 8px 0 0;
+  white-space: pre-line;
 }
 
 /* ══════════════════════════════

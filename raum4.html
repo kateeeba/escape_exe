@@ -5,6 +5,7 @@
     <title>ESCAPE.EXE - Raum 4: CPU-Kern</title>
     <link rel="stylesheet" href="style.css" />
     <script src="inventar.js" defer></script>
+    <script src="dialog.js" defer></script>
   </head>
   <body class="raum4">
     <div id="spiel-container">
@@ -23,6 +24,7 @@
 
       <!-- TEXTBEREICH -->
       <div id="textbereich">
+        <div class="raumtext">
         <p>
           Das Zentrum des Computersystems. Der CPU-Kern ist instabil und
           &uuml;berhitzt. Warnmeldungen erscheinen &uuml;berall im Raum.
@@ -31,6 +33,11 @@
           SYSROOT: &bdquo;Eine Reparatur wird nicht empfohlen. Der Kern ist zu
           instabil.&ldquo;
         </p>
+        </div>
+        <div class="hint-box">
+          <button id="btn-hinweis" type="button">SYSROOT-HINWEIS</button>
+          <p data-sysroot-output hidden></p>
+        </div>
       </div>
 
       <!-- INVENTAR -->

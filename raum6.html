@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style-ausgang.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="inventar.js" defer></script>
+    <script src="dialog.js" defer></script>
   </head>
   <body class="raum6">
     <div id="spiel-container">
@@ -24,6 +25,7 @@
 
       <!-- TEXTBEREICH -->
       <div id="textbereich">
+        <div class="raumtext">
         <p>
           Ein heller blauer Tunnel voller Energie und leuchtender Datenstr&ouml;me.
           Du erreichst endlich den Ausgang des Systems. Er ist noch versiegelt:
@@ -35,6 +37,11 @@
         <p id="usb-abschluss-text" hidden>
           Du verl&auml;sst das System und kehrst in die echte Welt zur&uuml;ck.
         </p>
+        </div>
+        <div class="hint-box">
+          <button id="btn-hinweis" type="button">SYSROOT-HINWEIS</button>
+          <p data-sysroot-output hidden></p>
+        </div>
       </div>
 
       <!-- INVENTAR -->

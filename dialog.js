@@ -1,4 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const raumName =
+    window.location.pathname.match(/(raum[1-6])\.html$/)?.[1] ?? "";
+  const hinweisButton = document.querySelector("#btn-hinweis");
+  const hinweisAusgabe =
+    document.querySelector("[data-sysroot-output], .sysroot-box") ??
+    document.querySelector("#meldung");
+  let hinweise = null;
+
+  const hinweisAnzeigen = (text) => {
+    if (!hinweisAusgabe) return;
+
+    hinweisAusgabe.hidden = false;
+    hinweisAusgabe.className = "sysroot-meldung";
+    hinweisAusgabe.textContent = text;
+  };
+
+  const hinweiseLaden = async () => {
+    if (hinweise) return hinweise;
+
+    const antwort = await fetch(`/api/hints/${raumName}`);
+    if (!antwort.ok) {
+      throw new Error("Hintserver antwortet nicht.");
+    }
+
+    const daten = await antwort.json();
+    hinweise = Array.isArray(daten.hints) ? daten.hints : [];
+    return hinweise;
+  };
+
+  if (hinweisButton && hinweisAusgabe) {
+    hinweisButton.addEventListener("click", async () => {
+      try {
+        const geladeneHinweise = await hinweiseLaden();
+
+        if (geladeneHinweise.length === 0) {
+          hinweisAnzeigen(
+            "SYSROOT:\nFür diesen Bereich sind keine Hinweise verfügbar.",
+          );
+          return;
+        }
+
+        const zufallsIndex = Math.floor(
+          Math.random() * geladeneHinweise.length,
+        );
+        hinweisAnzeigen(geladeneHinweise[zufallsIndex]);
+      } catch (error) {
+        console.error(error);
+        hinweisAnzeigen("SYSROOT:\nKeine Verbindung zum Hinweisserver.");
+      }
+    });
+  }
+
   const dialogInhalt = {
     text: "Finde das richtige Kabel, um den Tunnel wieder mit Strom zu versorgen.",
     answers: [

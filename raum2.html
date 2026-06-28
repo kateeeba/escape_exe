@@ -44,11 +44,17 @@
 
       <!-- TEXTBEREICH -->
       <div id="textbereich">
+        <div class="raumtext">
         <p>Die Energieversorgung ist besch&auml;digt.</p>
         <p>
           <strong>SYSROOT:</strong> &bdquo;Finde das richtige Kabel, um den
           Tunnel wieder mit Strom zu versorgen.&ldquo;
         </p>
+        </div>
+        <div class="hint-box">
+          <button id="btn-hinweis" type="button">SYSROOT-HINWEIS</button>
+          <p data-sysroot-output hidden></p>
+        </div>
       </div>
 
       <!-- INVENTAR -->
@@ -132,7 +138,9 @@
       <!-- INTERAKTIONSBEREICH -->
       <div id="interaktionsbereich">
         <h3>AKTIONEN</h3>
-        <div id="aktionen">W&auml;hle ein Kabel aus.</div>
+        <div id="aktionen">
+          <span>W&auml;hle ein Kabel aus.</span>
+        </div>
         <div id="meldung"></div>
       </div>
     </div>
